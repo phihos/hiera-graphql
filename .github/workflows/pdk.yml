@@ -1,0 +1,26 @@
+name: Run PDK tests
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Build Dependencies
+        run: |
+          curl -JLO 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=ubuntu&rel=20.04&arch=amd64&ver=2.5.0.0'
+          sudo dpkg -i pdk_2.5.0.0-1focal_amd64.deb
+
+      - name: Install PDK Ruby Dependencies
+        run: pdk bundle install
+
+      - name: Validate
+        run: pdk validate
+
+      - name: Run Unit Tests
+        run: pdk test unit
