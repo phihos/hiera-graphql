@@ -2,10 +2,14 @@
   "name": "phihos-hiera_graphql",
   "version": "0.1.0",
   "author": "Philipp Hossner",
-  "summary": "",
+  "summary": "A GraphQL backend for Hiera 5.",
   "license": "MIT",
-  "source": "",
+  "source": "https://github.com/phihos/hiera-graphql",
   "dependencies": [
+    {
+      "name": "phihos-graphql",
+      "version_requirement": "0.x.x"
+    }
 
   ],
   "operatingsystem_support": [
