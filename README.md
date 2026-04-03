@@ -112,7 +112,7 @@ This hiera backend currently does not use caching. PRs welcome.
 
 Pull requests welcome.
 
-THis module is developed via PDK so the usual commands apply: 
+This module is developed via PDK so the usual commands apply: 
 ```bash
 pdk bundle install
 pdk validate
