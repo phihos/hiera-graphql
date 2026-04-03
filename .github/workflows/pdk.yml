@@ -6,15 +6,15 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install Build Dependencies
         run: |
-          curl -JLO 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=ubuntu&rel=20.04&arch=amd64&ver=2.5.0.0'
-          sudo dpkg -i pdk_2.5.0.0-1focal_amd64.deb
+          curl -JLO 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=ubuntu&rel=22.04&arch=amd64&ver=3.6.1.1'
+          sudo dpkg -i pdk_3.6.1.1-1jammy_amd64.deb
 
       - name: Install PDK Ruby Dependencies
         run: pdk bundle install
