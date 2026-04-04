@@ -40,8 +40,8 @@ describe FakeFunction do # rubocop:disable FilePath
         query_opts = {}
         expect(function).to receive(:call_function).with('lookup', lookup_key).and_return(query_opts)
         expect(function).to receive(:call_function).with('graphql::graphql_query', query_opts).and_return(nil)
+        expect(context).to receive(:not_found)
         function.lookup_key(hiera_key, options, context)
-        expect(context).to have_received(:not_found)
       end
     end
 
@@ -54,13 +54,13 @@ describe FakeFunction do # rubocop:disable FilePath
       end
 
       it 'calls context.not_found' do
+        expect(context).to receive(:not_found)
         function.lookup_key('other_key', options, context)
-        expect(context).to have_received(:not_found)
       end
 
       it 'logs a skip message via context.explain' do
+        expect(context).to receive(:explain)
         function.lookup_key('other_key', options, context)
-        expect(context).to have_received(:explain)
       end
     end
 
