@@ -19,6 +19,8 @@ AllCops:
   - "**/Puppetfile"
   - "**/Vagrantfile"
   - "**/Guardfile"
+Layout/BlockAlignment:
+  Enabled: false
 Layout/LineLength:
   Description: People have wide screens, use them.
   Max: 200
