@@ -22,12 +22,12 @@ retrieve data from any GraphQL backend.
 
 ### What hiera_graphql affects
 
-This hiera backend hooks into your hiera lookups. 
-Since you have to statically set `confige_key` for a query it is very unlikely that a GraphQL query is being done by accident. 
+This hiera backend hooks into your hiera lookups.
+Since you have to statically set `confine_key` for a query it is very unlikely that a GraphQL query is being done by accident.
 
 ### Setup Requirements
 
-This module requires the [graphql](https://forge.puppet.com/modules/phihos/graphql) module which in turn requires 
+This module requires the [graphql](https://forge.puppet.com/modules/phihos/graphql) module which in turn requires
 the [graphql-client](https://github.com/github/graphql-client) gem to be installed on the puppetserver.
 
 You can install it manually by running:
@@ -49,7 +49,7 @@ The parameters above are the defaults.
 
 ## Usage
 
-The hiera_graphql backend in meant to be used alongside the default YAML backend to retrieve options for the 
+The hiera_graphql backend is meant to be used alongside the default YAML backend to retrieve options for the
 `graphql::graphql_query` function.
 This is a basic example:
 
@@ -65,7 +65,7 @@ hierarchy:
     lookup_key: hiera_graphql
     options:
       confine_to_key: netbox # will only do something when this exact key is looked up
-      graphql_query_opts_lookup_key: '__hiera_graphql_netbox' # a hiera key containin query options
+      graphql_query_opts_lookup_key: '__hiera_graphql_netbox' # a hiera key containing query options
   - name: "Common"
     glob: "common.yaml"
 ```
@@ -75,9 +75,9 @@ hierarchy:
 __hiera_graphql_netbox:
    url: 'https://netbox.tls/graphql/'
    headers:
-      # for auth try to fetch the credentials via backends lieke hiera_vault or hiera_eyaml
-      Authorization: "Token %{lookup('vault_netbox.token')}"  
-    # not that facts and variables can be interpolated into the query
+      # for auth try to fetch the credentials via backends like hiera_vault or hiera_eyaml
+      Authorization: "Token %{lookup('vault_netbox.token')}"
+    # note that facts and variables can be interpolated into the query
    query: |
       {
         device_list(name: "%{::hostname}") {
