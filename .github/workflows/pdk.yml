@@ -11,10 +11,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Build Dependencies
-        run: |
-          curl -JLO 'https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=ubuntu&rel=22.04&arch=amd64&ver=3.3.0.0'
-          sudo dpkg -i pdk_3.3.0.0-1jammy_amd64.deb
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Install PDK
+        run: gem install pdk
 
       - name: Install PDK Ruby Dependencies
         run: pdk bundle install

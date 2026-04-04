@@ -5,6 +5,7 @@ require:
 AllCops:
   DisplayCopNames: true
   TargetRubyVersion: '2.5'
+  NewCops: disable
   Include:
   - "**/*.rb"
   Exclude:
@@ -120,6 +121,8 @@ Gemspec/OrderedDependencies:
 Gemspec/RequiredRubyVersion:
   Enabled: false
 Gemspec/RubyVersionGlobalsUsage:
+  Enabled: false
+Layout/BlockAlignment:
   Enabled: false
 Layout/ArgumentAlignment:
   Enabled: false
