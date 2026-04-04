@@ -54,13 +54,15 @@ describe FakeFunction do # rubocop:disable FilePath
       end
 
       it 'calls context.not_found' do
-        expect(context).to receive(:not_found)
-        function.lookup_key('other_key', options, context)
+        # context.not_found raises in Puppet to halt execution
+        expect(context).to receive(:not_found).and_raise(StopIteration)
+        expect { function.lookup_key('other_key', options, context) }.to raise_error(StopIteration)
       end
 
       it 'logs a skip message via context.explain' do
+        allow(context).to receive(:not_found).and_raise(StopIteration)
         expect(context).to receive(:explain)
-        function.lookup_key('other_key', options, context)
+        expect { function.lookup_key('other_key', options, context) }.to raise_error(StopIteration)
       end
     end
 
