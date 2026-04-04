@@ -15,6 +15,7 @@ Puppet::Functions.create_function(:hiera_graphql) do
     unless confine_key == key
       context.explain { "[hiera-graphql] Skipping hiera_graphql backend because key '#{key}' does not match confine_to_key" }
       context.not_found
+      return
     end
 
     opts = call_function('lookup', graphql_query_opts)
