@@ -23,29 +23,11 @@ retrieve data from any GraphQL backend.
 ### What hiera_graphql affects
 
 This hiera backend hooks into your hiera lookups.
-Since you have to statically set `confine_key` for a query it is very unlikely that a GraphQL query is being done by accident.
+Since you have to statically set `confine_to_key` for a query it is very unlikely that a GraphQL query is being done by accident.
 
 ### Setup Requirements
 
-This module requires the [graphql](https://forge.puppet.com/modules/phihos/graphql) module which in turn requires
-the [graphql-client](https://github.com/github/graphql-client) gem to be installed on the puppetserver.
-
-You can install it manually by running:
-
-```bash
-puppetserver gem install graphql-client
-```
-
-You can also automate this by applying the included class `graphql::puppetserver`:
-
-```puppet
-class { 'graphql::puppetserver':
-  gem_ensure           => 'present',
-  puppetserver_service => 'puppetserver',
-}
-```
-
-The parameters above are the defaults.
+This module requires the [graphql](https://forge.puppet.com/modules/phihos/graphql) module.
 
 ## Usage
 
