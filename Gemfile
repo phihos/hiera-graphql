@@ -28,7 +28,7 @@ group :development do
   gem "puppet-debugger", '~> 1.0',                     require: false
   gem "rubocop", '1.86.0',                            require: false
   gem "rubocop-performance", '1.10.2',                require: false
-  gem "rubocop-rspec", '= 2.0.1',                      require: false
+  gem "rubocop-rspec", '3.9.0',                      require: false
   gem "rb-readline", '= 0.5.5',                        require: false, platforms: [:mswin, :mingw, :x64_mingw]
 end
 group :system_tests do
